@@ -1,0 +1,58 @@
+{
+  "_comment": [
+    "Two kinds of bot, and confusing them is the mistake this whole tool exists",
+    "to stop. The lists are deliberately conservative: an agent nobody can",
+    "confidently classify goes in `unclassified` and is reported as undecided,",
+    "because a checker that guesses is the thing it is trying to replace.",
+    "",
+    "Sources are each vendor's own published crawler documentation, read rather",
+    "than remembered. Where a vendor runs several agents with different jobs,",
+    "each is listed separately — that is precisely where the confusion starts."
+  ],
+  "training": {
+    "_what": "Collects pages to train a model. Refusing it says 'do not train on me'. It is deliberate, common, entirely reasonable, and it does NOT remove you from an assistant's answers.",
+    "agents": {
+      "GPTBot": "OpenAI model training.",
+      "CCBot": "Common Crawl. Not an AI company, but its archive is a common training input.",
+      "ClaudeBot": "Anthropic model training.",
+      "anthropic-ai": "Legacy Anthropic training agent.",
+      "Google-Extended": "Gemini training ONLY. It has no effect on Google Search ranking or inclusion. This is the single most misread token in robots.txt.",
+      "Applebot-Extended": "Apple Intelligence training opt-out. Plain Applebot still crawls for Siri and Spotlight, so blocking this does not remove you from Apple's answers.",
+      "Bytespider": "ByteDance model training.",
+      "Meta-ExternalAgent": "Meta model training.",
+      "Amazonbot": "Amazon; documented as supporting Alexa answers and training. Listed here because its primary documented purpose is collection, not answer-time retrieval.",
+      "Diffbot": "Knowledge-graph collection.",
+      "Omgilibot": "Data resale for training.",
+      "Timpibot": "Dataset collection.",
+      "cohere-ai": "Cohere model training.",
+      "AI2Bot": "Allen Institute dataset collection."
+    }
+  },
+  "retrieval": {
+    "_what": "Fetches or indexes a page so an assistant or a search engine can READ and CITE it at the moment somebody asks. Refuse these and you genuinely cannot be recommended.",
+    "agents": {
+      "ChatGPT-User": "Fetches a page live when a ChatGPT user's question needs it.",
+      "OAI-SearchBot": "Indexes pages for ChatGPT search results.",
+      "Claude-User": "Fetches a page live for a Claude user's request.",
+      "Claude-SearchBot": "Indexes pages for Claude's search.",
+      "PerplexityBot": "Indexes pages for Perplexity answers.",
+      "Perplexity-User": "Fetches a page live for a Perplexity user.",
+      "Googlebot": "Google Search. Blocking this removes you from Google, and from AI Overviews with it.",
+      "Bingbot": "Bing, and therefore Copilot.",
+      "Applebot": "Siri and Spotlight suggestions.",
+      "DuckDuckBot": "DuckDuckGo.",
+      "Slurp": "Yahoo.",
+      "YandexBot": "Yandex.",
+      "Bingpreview": "Bing page preview rendering.",
+      "MistralAI-User": "Fetches a page live for a Mistral user."
+    }
+  },
+  "unclassified": {
+    "_what": "Named in the wild, but this file will not assert which job it does. Reported as undecided rather than counted either way.",
+    "agents": {
+      "Bytespider-Search": "Documentation is inconsistent about whether this is collection or retrieval.",
+      "FacebookBot": "Documented for link previews and for language-model work at different times.",
+      "PetalBot": "Huawei; documented as a search crawler, also reported as a collection agent."
+    }
+  }
+}
